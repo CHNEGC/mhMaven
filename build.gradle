@@ -1,0 +1,39 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.5.31"
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+//        maven { url 'https://raw.githubusercontent.com/DDStar/GithubMavenDemo/master/'}
+        maven { url 'https://raw.githubusercontent.com/mave-cgc/mh-maven/main/'}
+        maven {url "https://plugins.gradle.org/m2/"}
+        maven {url 'file://D:/maven/obj/mh/common/'}
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.kezong:fat-aar:1.2.16'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven { url 'https://raw.githubusercontent.com/mave-cgc/mh-maven/main/'}
+        maven {url 'file://D:/maven/obj/mh/common/'}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
